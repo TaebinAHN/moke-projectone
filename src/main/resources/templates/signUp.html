@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latet.min.js"></script>
+<script type="text/javascript">
+
+        function fn_idCheck(){
+            $('.username_input').change(function () {
+                 $('#id_check_sucess').hide();
+                 $('.id_overlap_button').show();
+                 $('.username_input').attr("check_result", "fail");
+               })
+            }
+        }
+
+</script>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>MOKE-회원가입</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+        <form method="post" action="/signUp">
+            <div class="container">
+                <h1>회원가입 페이지</h1>
+                <div class="form-group">
+                    <label for="inputId">userId</label>
+                    <input type="text" class="form-control" id="inputId" name="userId" placeholder="사용하실 ID를 입력해주세요.">
+                    <button type="button" onclick="fn_idCheck()">중복검사</button>
+                </div>
+                <div class="form-group">
+                    <label for="inputPw">userPw</label>
+                    <input type="password" class="form-control" id="inputPw" name="userPw" placeholder="사용하실 비밀번호를 입력해주세요.">
+                </div>
+                    <label for="inputNm">userId</label>
+                    <input type="text" class="form-control" id="inputNm" name="userNm" placeholder="회원명">
+                <div class="form-group">
+                    <label for="inputPn">userId</label>
+                    <input type="tel" class="form-control" id="inputPn" name="userPhone">
+                </div>
+                <button type="submit" class="btn btn-primary">가입 하기</button>
+
+
+
+            </div>
+            <div>
+
+            </div>
+        </form>
+    </body>
+</html>
