@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="moke.mokeprojectone.mapper.UserMapper">
+    <select id="joinUser" parameterType="moke.mokeprojectone.vo.UserVo">
+        insert into tb_moke_user
+        (
+        user_no
+        , user_id
+        , user_pw
+        , user_nm
+        , user_gender
+        , user_regdate
+        , user_role
+        , user_phone
+        )
+        values
+        (
+        (SELECT nvl(MAX(user_no),'10000000')+1 user_no FROM tb_moke_user)
+        , #{userId}
+        , #{userPw}
+        , #{userNm}
+        , #{userGender}
+        , sysdate
+        , 'USER'
+        , #{userPhone}
+        )
+    </select>
+</mapper>
