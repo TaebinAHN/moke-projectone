@@ -21,14 +21,5 @@ public class MokeController {
         return modelAndView;
     }
 
-    @RequestMapping("signUp")
-    public ModelAndView signup() throws Exception{
-
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("signUp");
-        modelAndView.addObject("reponse", "signUp");
-
-        return modelAndView;
-    }
 
 }
