@@ -6,7 +6,7 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
         function checkId(){
-            var userId = $('#userId').val();
+            var userId = $('#inputId').val();
             $.ajax({
                 url:'./idCheck', //Controller에서 요청 받을 주소
                 type:'GET', //POST 방식으로 전달
@@ -19,7 +19,7 @@
                         $('.id_already').css("display","inline-block");
                         $('.id_ok').css("display", "none");
                         alert("아이디를 다시 입력해주세요");
-                        $('#userId').val('');
+                        $('#inputId').val('');
                     }
                 },
                 error:function(){

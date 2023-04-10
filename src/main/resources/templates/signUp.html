@@ -41,8 +41,7 @@
                     <h1>회원가입 페이지</h1>
                     <div class="form-group">
                         <label for="inputId">userId</label>
-                        <input type="text" class="form-control" id="inputId" name="userId" placeholder="사용하실 ID를 입력해주세요.">
-                        <input type="button" id="idCheck" name="userId" onclick="checkId();" value="중복확인">
+                        <input type="text" class="form-control" id="inputId" name="userId" onchange="checkId();" placeholder="사용하실 ID를 입력해주세요.">
                         <!-- id ajax 중복체크 -->
                         <span class="id_ok">사용 가능한 아이디입니다.</span>
                         <span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
