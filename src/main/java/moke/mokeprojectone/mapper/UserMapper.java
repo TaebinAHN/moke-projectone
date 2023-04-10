@@ -8,4 +8,6 @@ public interface UserMapper {
 
     void joinUser(UserVo userVo);
 
+    int idCheck(String userId);
+
 }

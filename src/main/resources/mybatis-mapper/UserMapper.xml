@@ -27,4 +27,11 @@
         , #{userPhone}
         )
     </select>
+
+    <select id="idCheck" parameterType="String" resultType="int">
+        select count(user_Id)
+        from tb_moke_user
+        where 1=1
+        and user_id = #{userId}
+    </select>
 </mapper>

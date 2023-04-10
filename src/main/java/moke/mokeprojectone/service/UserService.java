@@ -16,9 +16,13 @@ public class UserService {
 
     @Transactional
     public void joinUser(UserVo userVo){
-
         userMapper.joinUser(userVo);
+    }
 
+    public int idCheck(String userId){
+       int result = userMapper.idCheck(userId);
+
+        return result;
     }
 
 

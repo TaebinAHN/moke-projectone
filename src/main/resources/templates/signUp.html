@@ -1,54 +1,106 @@
-<!DOCTYPE HTML>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-latet.min.js"></script>
-<script type="text/javascript">
+<!DOCTYPE html>
+<html lang="en">
 
-        function fn_idCheck(){
-            $('.username_input').change(function () {
-                 $('#id_check_sucess').hide();
-                 $('.id_overlap_button').show();
-                 $('.username_input').attr("check_result", "fail");
-               })
-            }
-        }
-
-</script>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>MOKE-회원가입</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/scripts.js"></script>
+    <title>MOKE - 모여라 크루! 여러 분야의 동아리 활동</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/bootstrap/css/styles.css" rel="stylesheet" />
 </head>
     <body>
-        <form method="post" action="/signUp">
-            <div class="container">
-                <h1>회원가입 페이지</h1>
-                <div class="form-group">
-                    <label for="inputId">userId</label>
-                    <input type="text" class="form-control" id="inputId" name="userId" placeholder="사용하실 ID를 입력해주세요.">
-                    <button type="button" onclick="fn_idCheck()">중복검사</button>
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="main"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="main">홈으로</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login">로그인</a></li>
+                            <li class="nav-item"><a class="nav-link" href="signUp">회원가입</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputPw">userPw</label>
-                    <input type="password" class="form-control" id="inputPw" name="userPw" placeholder="사용하실 비밀번호를 입력해주세요.">
-                </div>
+            </nav>
+            <form method="post" action="/signUp">
+                <div class="container">
+                    <h1>회원가입 페이지</h1>
+                    <div class="form-group">
+                        <label for="inputId">userId</label>
+                        <input type="text" class="form-control" id="inputId" name="userId" placeholder="사용하실 ID를 입력해주세요.">
+                        <input type="button" id="idCheck" name="userId" onclick="checkId();" value="중복확인">
+                        <!-- id ajax 중복체크 -->
+                        <span class="id_ok">사용 가능한 아이디입니다.</span>
+                        <span class="id_already">누군가 이 아이디를 사용하고 있어요.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPw">userPw</label>
+                        <input type="password" class="form-control" id="inputPw" name="userPw" placeholder="사용하실 비밀번호를 입력해주세요.">
+                    </div>
                     <label for="inputNm">userId</label>
                     <input type="text" class="form-control" id="inputNm" name="userNm" placeholder="회원명">
-                <div class="form-group">
-                    <label for="inputPn">userGender</label>
-                    <input type="text" class="form-control" id="inputGn" name="userGender">
+                    <div class="form-group">
+                        <label for="inputPn">userGender</label>
+                        <input type="text" class="form-control" id="inputGn" name="userGender">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPn">userPn</label>
+                        <input type="tel" class="form-control" id="inputPn" name="userPhone">
+                    </div>
+                    <button type="submit" class="btn btn-primary">가입 하기</button>
                 </div>
-                <div class="form-group">
-                    <label for="inputPn">userPn</label>
-                    <input type="tel" class="form-control" id="inputPn" name="userPhone">
+            </form>
+            <section class="bg-light py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-xxl-8">
+                            <div class="text-center my-5">
+                                <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
+                                <p class="lead fw-light mb-4">My name is Start Bootstrap and I help brands grow.</p>
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit dolorum itaque qui unde quisquam consequatur autem. Eveniet quasi nobis aliquid cumque officiis sed rem iure ipsa! Praesentium ratione atque dolorem?</p>
+                                <div class="d-flex justify-content-center fs-2 gap-4">
+                                    <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
+                                    <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
+                                    <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">가입 하기</button>
-
-
-
+            </section>
+        </main>
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Contact</a>
+                    </div>
+                </div>
             </div>
-            <div>
-
-            </div>
-        </form>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/bootstrap/js/scripts.js"></script>
     </body>
 </html>

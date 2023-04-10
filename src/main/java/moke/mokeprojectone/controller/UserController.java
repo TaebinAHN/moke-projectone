@@ -41,4 +41,13 @@ public class UserController {
         return modelAndView;
     }
 
+    @ResponseBody
+    @GetMapping("/idCheck")
+    public int idCheck(@RequestParam("userId") String userId){
+
+       int result = userService.idCheck(userId);
+
+       return result;
+    }
+
 }
