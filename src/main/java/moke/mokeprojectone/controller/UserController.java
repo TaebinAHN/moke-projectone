@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping("/signUp")
     public String joinUser(UserVo userVo){
         userService.joinUser(userVo);
-        return "index";
+        return "redirect:/login";
     }
 
     @RequestMapping("/login")
