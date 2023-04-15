@@ -16,6 +16,7 @@ public class UserService {
 
     @Transactional
     public void joinUser(UserVo userVo){
+        //test
         userMapper.joinUser(userVo);
     }
 
