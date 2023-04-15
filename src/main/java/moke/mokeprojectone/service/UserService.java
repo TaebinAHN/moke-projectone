@@ -16,7 +16,7 @@ public class UserService {
 
     @Transactional
     public void joinUser(UserVo userVo){
-        //test
+        //test taebin1
         userMapper.joinUser(userVo);
     }
 
