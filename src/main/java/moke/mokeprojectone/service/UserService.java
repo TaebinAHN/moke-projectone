@@ -21,7 +21,7 @@ public class UserService {
     }
 
     public int idCheck(String userId){
-        // HB TEST-4
+        // HB TEST-5
        int result = userMapper.idCheck(userId);
 
         return result;
