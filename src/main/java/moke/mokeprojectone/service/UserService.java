@@ -16,12 +16,12 @@ public class UserService {
 
     @Transactional
     public void joinUser(UserVo userVo){
-        //test
+        //test taebin1
         userMapper.joinUser(userVo);
     }
 
     public int idCheck(String userId){
-        // HB TEST
+        // HB TEST-4
        int result = userMapper.idCheck(userId);
 
         return result;
