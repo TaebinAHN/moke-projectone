@@ -20,7 +20,6 @@ public class UserService {
     }
 
     public int idCheck(String userId){
-        // HB test
        int result = userMapper.idCheck(userId);
 
         return result;
