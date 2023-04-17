@@ -17,12 +17,12 @@
         )
         values
         (
-        (SELECT nvl(MAX(user_no),'10000000')+1 user_no FROM tb_moke_user)
+        (SELECT nvl(MAX(user_no),'10000000')+1 user_no FROM tb_moke_user ALIAS_FOR_SUBQUERY)
         , #{userId}
         , #{userPw}
         , #{userNm}
         , #{userGender}
-        , sysdate
+        , DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s')
         , 'USER'
         , #{userPhone}
         )
