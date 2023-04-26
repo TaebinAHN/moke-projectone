@@ -16,6 +16,7 @@ public class BoardService {
     @Autowired
     BoardMapper boardMapper;
 
+
     @Transactional
     public void openBoardList(BoardVo boardVo){
 
@@ -29,14 +30,11 @@ public class BoardService {
     }
 
 
-//    public void selectBoardList(BoardVo boardVo) {
-//    }
+    @Transactional
+    public void insertBoard(BoardVo boardVo) throws Exception{
 
-    /*@Transactional
-    public void boardWrite(BoardVo boardVo) {
-
-    boardMapper.boardWrite(boardVo);
-
-    }*/
+        boardMapper.insertBoard(boardVo);
+    }
 
 }
+

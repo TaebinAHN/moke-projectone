@@ -10,6 +10,9 @@ public interface BoardMapper {
 
     void selectBoardList(BoardVo boardVo);
 
-    // 여기서 지정한 메서드의 이름은 쿼리의 이름과 동일해야 함 (selectBoardList)
     List<BoardVo> selectBoardList() throws Exception;
+
+    void insertBoard(BoardVo boardVo) throws Exception;
+
+
 }

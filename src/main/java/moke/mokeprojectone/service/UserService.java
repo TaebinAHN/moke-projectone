@@ -27,8 +27,5 @@ public class UserService {
         return result;
     }
 
-    public UserVo userLogin(UserVo userVo) throws Exception{
 
-        return userMapper.loginUser(userVo);
-    }
 }

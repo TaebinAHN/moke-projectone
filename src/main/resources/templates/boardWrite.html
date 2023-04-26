@@ -1,39 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>게시물 작성</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/board_scripts.js"></script>
+    <title>wirte</title>
+    <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="/bootstrap/css/styles.css" rel="stylesheet" />
 </head>
 
-<style>
-
-    .layout {
-        width : 500px;
-        margin : 0 auto;
-    }
-
-    .layout input {
-        width : 100%;
-        box-sizing : border-box
-    }
-
-    .layout textarea {
-        width : 100%;
-        margin-top : 10px;
-        min-height : 300px;
-    }
-
-
-</style>
-
-
 <body>
-    <div class="layout">
-        <form action="/board/write.do" method="post">
-            <input name="title" type="text">
-            <textarea name="content"></textarea>
-            <button type="submit">작성</button>
-        </form>
+<div class="container">
+    <h2>게시판 등록</h2>
+    // 사용자가 입력한 내용들을 서버로 전달하기 위해 form 태그 이용. action에는 요청을 수행할 서버의 주소를 입력 -> 아직 만들지 않음.
+    <form id="frm" name="frm" method="post" action="/insertBoard">
+        <table class="board_detail">
+            <tr>
+                <select class="region" id="boardRegion" name="boardRegion">
+                    <option value="0">지역</option>
+                    <option value="서울">서울</option>
+                    <option value="경기도">경기도</option>
+                    <option value="강원도">강원도</option>
+                    <option value="충청도">충청도</option>
+                    <option value="대전">대전</option>
+                    <option value="전라도">전라도</option>
+                    <option value="광주">광주</option>
+                    <option value="경상도">경상도</option>
+                    <option value="부산">부산</option>
+                    <option value="대구">대구</option>
+                    <option value="울산">울산</option>
+                    <option value="제주도">제주도</option>
+                </select>
+                <select class="interest" id="boardInterest" name="boardInterest">
+                    <option value="00">관심사</option>
+                    <option value="프로젝트">프로젝트</option>
+                    <option value="스터디">스터디</option>
+                    <option value="정보공유">정보공유</option>
+                    <option value="소모임">소모임</option>
+                    <option value="QNA">QNA</option>
+                </select>
+            </tr>
+            <tr>  </tr>
+            <tr>  </tr>
+            <tr>
+                <td>제목</td>
+                <td><input type="text" id="boardTitle" name="boardTitle"></td>
+            </tr>
+            // 작성자 input창은 세션 만들어지면 disable처리
+            <tr>
+                <td>작성자</td>
+                <td><input type="text" id="boardName" name="boardName"></td>
+            </tr>
+            <tr>
+                <td>내용</td>
+                <td colspan="2">
+                    <textarea id="boardContent" name="boardContent"></textarea>
+                </td>
+            </tr>
+        </table>
+        <button id="button" type="submit" class="btn btn-primary">저장</button>
+    </form>
+</div>
+<footer class="bg-white py-4 mt-auto">
+    <div class="container px-5">
+        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+            <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
+            <div class="col-auto">
+                <a class="small" href="#!">Privacy</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="#!">Terms</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="#!">Contact</a>
+            </div>
+        </div>
     </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/bootstrap/js/scripts.js"></script>
 </body>
 </html>
