@@ -11742,3 +11742,51 @@ display: none;
 color:#6A82FB;
 display: none;
 }
+
+table {
+        width:100%;
+        margin: auto;
+        }
+
+        table th {
+        text-align: left;
+        border-bottom: 1px solid #e1dfdf;
+        }
+
+        table th, table td {
+        padding: 0.4em;
+        }
+
+        table.fold-table > tbody > tr.view td {
+        cursor: pointer;
+        }
+
+        /*아이콘 위치설정*/
+        table.fold-table > tbody > tr.view td:first-child{
+        position: relative;
+        padding-left: 20px;
+        }
+
+        /*아이콘 설정*/
+        table.fold-table > tbody > tr.view td:first-child:before {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        width: 9px;
+        height: 16px;
+        margin-top: -8px;
+        font: 16px fontawesome;
+        color: #999;
+        content: "";
+        }
+
+
+        /*마우스호버*/
+        table.fold-table > tbody > tr.view:hover {
+        background: tomato;
+        }
+
+        /*미클릭시 안보이게 처리*/
+        table.fold-table > tbody > tr.fold {
+        display: none;
+        }

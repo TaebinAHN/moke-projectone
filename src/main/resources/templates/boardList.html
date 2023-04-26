@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/bootstrap/js/scripts.js"></script>
+    <script type="text/javascript" src="/bootstrap/js/board_scripts.js"></script>
     <title>board</title>
     <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico" />
     <!-- Custom Google font-->
@@ -18,71 +18,72 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/bootstrap/css/styles.css" rel="stylesheet" />
 </head>
-    <body>
-        <form method="post" action="/signUp">
-            <div class="container">
-                <h2>게시글 목록</h2>
-                    <table class="board_list">
-                        <colgroup>
-                            <col width="*"/>
-                            <col width="*"/>
-                            <col width="*"/>
-                            <col width="*"/>
-                            <col width="*"/>
-                            <col width="*"/>
-                            <col width="*"/>
-                            <col width="*"/>
-                        </colgroup>
-                    <thead>
-                        <tr>
-                            <th scope="col">순번</th>
-                            <th scope="col">취미</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">내용</th>
-                            <th scope="col">작성자</th>
-                            <th scope="col">작성일</th>
-                            <th scope="col">조회수</th>
-                            <th scope="col">좋와요</th>
-                            <th scope="col">지역</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
-                            <td th:text="${list.boardNo}">순번</td>
-                            <td th:text="${list.boardInterest}">취미</td>
-                            <td th:text="${list.boardTitle}">제목</td>
-                            <td th:text="${list.boardContent}">내용</td>
-                            <td th:text="${list.boardName}">작성자</td>
-                            <td th:text="${list.boardDate}">작성일</td>
-                            <td th:text="${list.boardChk}">조회수</td>
-                            <td th:text="${list.boardLike}">좋와요</td>
-                            <td th:text="${list.boardRegion}">지역</td>
-                        </tr>
-                        <tr th:unless="${#lists.size(list)} > 0">
-                            <td colspan="4">조회된 결과가 없습니다.</td>
-                        </tr>
-                    </tbody>
-                    </table>
+<body>
+<form method="post" action="/boardWrite">
+    <div class="container">
+        <h2>게시글 목록</h2>
+        <table class="fold-table">
+            <colgroup>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/>
+                <col width="*"/>
+            </colgroup>
+            <thead>
+            <tr>
+                <th scope="col">순번</th>
+                <th scope="col">취미</th>
+                <th scope="col">제목</th>
+                <th scope="col">내용</th>
+                <th scope="col">작성자</th>
+                <th scope="col">작성일</th>
+                <th scope="col">조회수</th>
+                <th scope="col">좋와요</th>
+                <th scope="col">지역</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="view" th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
+                <td th:text="${list.boardNo}">순번</td>
+                <td th:text="${list.boardInterest}">취미</td>
+                <td th:text="${list.boardTitle}">제목</td>
+                <td th:text="${list.boardContent}">내용</td>
+                <td th:text="${list.boardName}">작성자</td>
+                <td th:text="${list.boardDate}">작성일</td>
+                <td th:text="${list.boardChk}">조회수</td>
+                <td th:text="${list.boardLike}">좋와요</td>
+                <td th:text="${list.boardRegion}">지역</td>
+            </tr>
+            <tr th:unless="${#lists.size(list)} > 0">
+                <td colspan="4">조회된 결과가 없습니다.</td>
+            </tr>
+            </tbody>
+            <button type="buttonlist" onclick="location.href='./boardWrite'">글쓰기</button>
+        </table>
+    </div>
+</form>
+<!-- Footer-->
+<footer class="bg-white py-4 mt-auto">
+    <div class="container px-5">
+        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+            <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
+            <div class="col-auto">
+                <a class="small" href="#!">Privacy</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="#!">Terms</a>
+                <span class="mx-1">&middot;</span>
+                <a class="small" href="#!">Contact</a>
             </div>
-        </form>
-        <!-- Footer-->
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
-                        <a class="small" href="#!">Privacy</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Terms</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/bootstrap/js/scripts.js"></script>
-    </body>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/bootstrap/js/scripts.js"></script>
+</body>
 </html>
