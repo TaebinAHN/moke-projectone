@@ -3,6 +3,8 @@ package moke.mokeprojectone.vo;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
+
 @Data
 public class UserVo {
 
