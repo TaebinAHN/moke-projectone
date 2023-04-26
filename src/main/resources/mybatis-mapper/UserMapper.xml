@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="moke.mokeprojectone.mapper.UserMapper">
-    <select id="joinUser" parameterType="moke.mokeprojectone.vo.UserVo">
+    <insert id="joinUser" parameterType="moke.mokeprojectone.vo.UserVo">
         insert into tb_moke_user
         (
         user_no
@@ -17,21 +17,29 @@
         )
         values
         (
-        (SELECT nvl(MAX(user_no),'10000000')+1 user_no FROM tb_moke_user)
+        (SELECT nvl(MAX(user_no),'10000000')+1 user_no FROM tb_moke_user ALIAS_FOR_SUBQUERY)
         , #{userId}
         , #{userPw}
         , #{userNm}
         , #{userGender}
-        , sysdate
+        , DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s')
         , 'USER'
         , #{userPhone}
         )
-    </select>
+    </insert>
 
     <select id="idCheck" parameterType="String" resultType="int">
         select count(user_Id)
         from tb_moke_user
         where 1=1
         and user_id = #{userId}
+    </select>
+
+    <select id="loginUser" resultType="moke.mokeprojectone.vo.UserVo">
+        select user_id, user_pw
+        from tb_moke_user
+        where 1=1
+        and user_id = #{userId}
+        and user_pw = #{userPw}
     </select>
 </mapper>
