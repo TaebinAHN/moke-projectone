@@ -6,7 +6,7 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
         function checkId(){
-            let userId = $('#inputId').val();
+            var userId = $('#inputId').val();
             $.ajax({
                 url:'./idCheck', //Controller에서 요청 받을 주소
                 type:'GET', //POST 방식으로 전달
@@ -26,9 +26,3 @@
                 }
             });
         }
-
-	/*<![CDATA[*/
-
-	var sessionId = /*[[ ${session.userSession} ]]*/;
-
-	/*]]*/

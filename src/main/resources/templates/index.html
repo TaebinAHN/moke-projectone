@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <script type="text/javascript" src="/bootstrap/js/scripts.js"></script>
         <title>MOKE - 모여라 크루! 여러 분야의 동아리 활동</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico" />
@@ -21,9 +20,6 @@
         <link href="/bootstrap/css/styles.css" rel="stylesheet" />
     </head>
     <body class="d-flex flex-column h-100">
-        <div class="loading">
-            <img src="/bootstrap/assets/startloading.gif"  alt="loading image">
-        </div>
         <main class="flex-shrink-0">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
@@ -32,10 +28,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item">
-                            <span class="nav-item" value="${session.userVo.userNm}" id="userNm" name="userMn" readonly/>
-                            <span>님 모크 방문을 환영합니다.</span>
-                            </li>
+                            <li class="nav-item"><a class="nav-link" href="main">홈으로</a></li>
                             <li class="nav-item"><a class="nav-link" href="login">로그인</a></li>
                             <li class="nav-item"><a class="nav-link" href="signUp">회원가입</a></li>
                         </ul>
