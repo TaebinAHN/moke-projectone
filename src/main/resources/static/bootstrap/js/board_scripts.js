@@ -6,92 +6,54 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
-    var rows = document.getElementsByClassName("view");// view 라는 classname의 모든 element들 가져오기.
-        var i;
+    /* function changeClass(tr) {
+      tr.classList.toggle('changeColor');
+    } */
 
-        for (i = 0; i < rows.length; i++) { //elements를 for문으로 돌려서 각행에 클릭 리스너 등록.
-            rows[i].addEventListener("click", function() {
 
-                var content = this.nextElementSibling;
-                //display:table-row는 요소를 표 내의 행처럼 보이게한다.
-                if (content.style.display === "table-row") {
-                content.style.display = "none";
-                } else {
-                content.style.display = "table-row";
+
+    /* $(document).ready(function(){
+
+            // 특정 테이블의 row에 마우스 오버시 색상변경
+            $( ".tb-list tbody tr" ).on( "mouseover", function() {
+                $( this ).css( "background-color", "#f7f7f7" );
+                //$( this).children("td").css( "cursor", "pointer" );
+            });
+            $( ".tb-list tbody tr" ).on( "mouseleave", function() {
+                $( this ).css( "background-color", "white" );
+            });
+
+        }); */
+
+
+    function toggleContent() {
+      var rows = document.getElementsByClassName("view");
+      var i;
+
+      for (i = 0; i < rows.length; i++) {
+        rows[i].addEventListener("click", function() {
+          var content = this.nextElementSibling;
+          if (content.style.display === "table-row") {
+            content.style.display = "none";
+            this.classList.remove('changeColor'); // 색상 클래스 제거
+          } else {
+            content.style.display = "table-row";
+            this.classList.add('changeColor'); // 색상 클래스 추가
+          }
+
+          $.ajax({
+            url:'./boardRead',
+            type:'GET', //POST 방식으로 전달
+            data:{boardNo:boardNo},
+            success:function(result){
+                    alert("성공입니다");
+            },
+                  error:function(){
+                    alert("에러입니다");
                 }
+          });
+        });
+      }
+    }
 
-            });//click event
-        }//for문
 
-        /* function boardSave() {
-
-            console.log("1차")
-
-            // var boardNo          = $("#boardNo").val();
-            var boardInterest    = $("#boardInterest").val();
-            var boardTitle       = $("#boardTitle").val();
-            var boardContent     = $("#boardContent").val();
-            var boardName        = $("#boardName").val();
-            // var boardDate        = $("#boardDate").val();
-            // var boardChk         = $("#boardChk").val();
-            // var boardLike        = $("#boardLike").val();
-            var boardRegion      = $("#boardRegion").val();
-
-            if(! $("#boardInterest").val()) {
-                  alert("관심사를 선택해주세요");
-                  $("#boardInterest").focus();
-                  // msg_err = "E";
-                  return false;
-            }
-            if(! $("#boardTitle").val()) {
-                 alert("관심사를 선택해주세요");
-                 $("#boardTitle").focus();
-                 // msg_err = "E";
-                 return false;
-            }
-
-            if(! $("#boardContent").val()) {
-                 alert("관심사를 선택해주세요");
-                 $("#boardContent").focus();
-                 // msg_err = "E";
-                 return false;
-            }
-
-            if(! $("#boardName").val()) {
-                 alert("관심사를 선택해주세요");
-                 $("#boardName").focus();
-                 // msg_err = "E";
-                 return false;
-            }
-
-            if(! $("#boardRegion").val()) {
-                 alert("관심사를 선택해주세요");
-                 $("#boardRegion").focus();
-                 // msg_err = "E";
-                 return false;
-            }
-
-            var allData = {
-            					"board_interest"        :  boardInterest   ,
-            					"board_title"           :  boardTitle      ,
-            					"board_content"         :  boardContent    ,
-            					"board_name"            :  boardName       ,
-            					"board_region"          :  boardRegion
-            			   };
-            console.log("2차")
-
-            $.ajax({
-                    //console.log("3차")
-                    url:"./write",
-                    data:allData,
-                    dataType:"json",
-                    success:function(result){
-                        console.log("4차")
-                        alert("등록되었습니다.");
-
-                    }, error:function(jqXHR, textStatus, errorThrown){
-                             console.log("에러 발생: ", textStatus, errorThrown);
-                             alert("에러가 발생했습니다.");}
-              }); // ajax end
-
-        } */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:justify-content="http://www.w3.org/1999/xhtml">
+<html lang="ko">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -19,7 +19,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-<form method="post" action="/boardWrite">
+<form method="post" action="/boardList">
     <div class="container">
         <h2>게시글 목록</h2>
         <table class="fold-table">
@@ -47,7 +47,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="view" th:if="${#lists.size(list)} > 0" th:each="list : ${list}" onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='white'">
+            <tr class="view" th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
                 <td th:text="${list.boardNo}">순번</td>
                 <td th:text="${list.boardInterest}">취미</td>
                 <td th:text="${list.boardTitle}">제목</td>
@@ -66,31 +66,6 @@
         </table>
     </div>
 </form>
-<div class="text-center">
-    <!-- 이전 버튼 -->
-    <th:block th:if="${pageMaker.prev}">
-        <li class="pageMaker_btn prev">
-            <a href="javascript:void(0)" th:onclick="movePage([[ ${#request.requestURI} ]], [[ ${pageMaker.CriteriaVo.makeQueryString(pageMaker.pageStart - 1)} ]])">이전</a>
-        </li>
-    </th:block>
-
-    <!-- 페이지 번호 -->
-    <th:block th:with="pageMaker = ${pageMaker}">
-        <th:block th:each="num : *{#numbers.sequence(pageMaker.pageStart, pageMaker.pageEnd)}">
-            <li class="pageMaker_btn" th:classappend="${pageMaker.CriteriaVo.pageNum == num} ? 'active' : ''">
-                <a href="javascript:void(0)" th:text="${num}" th:onclick="movePage([[ ${#request.requestURI} ]],[[ ${pageMaker.CriteriaVo.makeQueryString(num)} ]])"></a>
-            </li>
-        </th:block>
-    </th:block>
-
-
-    <!-- 다음 버튼 -->
-    <th:block th:if="${pageMaker.next}">
-        <li class="pageMaker_btn next">
-            <a href="javascript:void(0)" th:onclick="movePage( [[ ${#request.requestURI} ]], [[ ${pageMaker.CriteriaVo.makeQueryString(pageMaker.pageEnd + 1)} ]])">다음</a>
-        </li>
-    </th:block>
-</div>
 <!-- Footer-->
 <footer class="bg-white py-4 mt-auto">
     <div class="container px-5">

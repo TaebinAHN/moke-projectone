@@ -3,6 +3,7 @@ package moke.mokeprojectone.service;
 import lombok.RequiredArgsConstructor;
 import moke.mokeprojectone.mapper.BoardMapper;
 import moke.mokeprojectone.vo.BoardVo;
+import moke.mokeprojectone.vo.CriteriaVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,14 +21,24 @@ public class BoardService {
     @Transactional
     public void openBoardList(BoardVo boardVo){
 
-        boardMapper.selectBoardList(boardVo);
+        boardMapper.selectBoardList();
     }
 
-    public List<BoardVo> selectBoardList(BoardVo boardVo) throws Exception {
+    public List<BoardVo> selectBoardList(CriteriaVo criteriaVo) throws Exception {
 
 
-        return boardMapper.selectBoardList();
+        return boardMapper.selectBoardList(criteriaVo);
     }
+
+    @Transactional
+    public int authorGetTotal(CriteriaVo criteriaVo) throws Exception {
+
+        return boardMapper.authorGetTotal(criteriaVo);
+    }
+
+    /* public List<BoardVo> findAllPost(final BoardVo boardVo) {
+        return boardMapper.findAll(boardVo);
+    } */
 
 
     @Transactional
