@@ -11,15 +11,19 @@ public interface BoardMapper {
 
     List<BoardVo> selectBoardList();
 
-    /* 작가 등록 */
     void authorEnroll(BoardVo boardVo);
 
-    /* 작가 총 수 */
     int authorGetTotal(CriteriaVo criteriaVo);
 
+    /* 페이징 */
     List<BoardVo> selectBoardList(CriteriaVo criteriaVo) throws Exception;
 
     void insertBoard(BoardVo boardVo) throws Exception;
 
+    List<BoardVo> boardRead(int boardNo);
 
+
+    List<BoardVo> boardUpdate(int boardNo);
+
+    List<BoardVo> boardUpdate_1(int boardNo);
 }

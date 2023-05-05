@@ -25,12 +25,14 @@
 </head>
 <body>
 <div class="container">
-    <h2>게시판 등록</h2>
-    <form id="frm" name="frm" method="post" action="/insertBoard">
+    <h2>게시판 수정</h2>
+    <form id="frm" name="frm" method="post" th:object="${boardVo}" action="/boardRead">
+        <!-- boardNo데이터 버튼 온클릭에 넣기 -->
         <table class="table table-bordered">
             <tr>
                 <select class="region" id="boardRegion" name="boardRegion">
                     <option value="0">지역</option>
+                    <option th:each="region : ${regionList}" th:value="${boardRegion}" th:text="${boardRegion}"></option>
                     <option value="서울">서울</option>
                     <option value="경기도">경기도</option>
                     <option value="강원도">강원도</option>
@@ -45,7 +47,7 @@
                     <option value="제주도">제주도</option>
                 </select>
                 <select class="interest" id="boardInterest" name="boardInterest">
-                    <option value="00">관심사</option>
+                    <option th:each="interest : ${interestList}" th:value="${boardInterest}" th:text="${boardInterest}"></option>
                     <option value="프로젝트">프로젝트</option>
                     <option value="스터디">스터디</option>
                     <option value="정보공유">정보공유</option>
@@ -57,20 +59,24 @@
             <tr>  </tr>
             <tr>
                 <td>제목</td>
-                <td><input type="text" id="boardTitle" name="boardTitle"></td>
+                <td><input type="text" id="boardTitle" name="boardTitle" th:value="${boardTitle}"></td>
             </tr>
             <tr>
                 <td>작성자</td>
-                <td><input type="text" id="boardName" name="boardName"></td>
+                <td><input type="text" id="boardName" name="boardName" th:value="${boardName}"></td>
             </tr>
             <tr>
                 <td>내용</td>
                 <td colspan="2">
-                    <textarea id="boardContent" name="boardContent"></textarea>
+                    <textarea id="boardContent" name="boardContent" th:value="${boardContent}"></textarea>
                 </td>
             </tr>
         </table>
-        <button id="button" type="submit" class="btn btn-primary">저장</button>
+        <div>
+            <!-- <button id="button" class="btn btn-primary" onclick="location.href='./boardWrite'">저장</button> -->
+            <input type="submit" th:onclick="|location.href='@{/boardRead/{boardNo}(boardNo=${boardNo})}'|" th:value="저장">
+            <input type="hidden" name="boardNo" th:value="${boardNo}" disabled>
+        </div>
     </form>
 </div>
 <footer class="bg-white py-4 mt-auto">

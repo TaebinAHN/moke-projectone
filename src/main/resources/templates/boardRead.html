@@ -6,6 +6,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/bootstrap/js/board_scripts.js"></script>
     <title>board</title>
     <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico" />
@@ -14,59 +19,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />-->
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-<form method="post" action="/boardList">
-    <div class="container">
-        <h2>게시글 목록</h2>
-        <table class="fold-table">
-            <colgroup>
-                <col width="*"/>
-                <col width="*"/>
-                <col width="*"/>
-                <col width="*"/>
-                <col width="*"/>
-                <col width="*"/>
-                <col width="*"/>
-                <col width="*"/>
-            </colgroup>
-            <thead>
+<div class="container">
+    <h2>게시글 상세보기</h2>
+        <form id="frm" name="frm" method="post" action="/boardList">
+            <button id="button" type="submit" class="btn btn-primary">목록</button>
+        </form>
+        <table class="table table-bordered">
             <tr>
-                <th scope="col">순번</th>
-                <th scope="col">취미</th>
-                <th scope="col">제목</th>
-                <th scope="col">내용</th>
-                <th scope="col">작성자</th>
-                <th scope="col">작성일</th>
-                <th scope="col">조회수</th>
-                <th scope="col">좋와요</th>
-                <th scope="col">지역</th>
+                <input type="hidden" id="boardNo" name="boardNo" th:value="${boardNo}" disabled>
             </tr>
-            </thead>
-            <tbody>
-            <tr class="view" th:if="${#lists.size(list)} > 0" th:each="list : ${list}">
-                <td th:text="${list.boardNo}">순번</td>
-                <td th:text="${list.boardInterest}">취미</td>
-                <td th:text="${list.boardTitle}">제목</td>
-                <td th:text="${list.boardContent}">내용</td>
-                <td th:text="${list.boardName}">작성자</td>
-                <td th:text="${list.boardDate}">작성일</td>
-                <td th:text="${list.boardChk}">조회수</td>
-                <td th:text="${list.boardLike}">좋와요</td>
-                <td th:text="${list.boardRegion}">지역</td>
+            <tr>
+                <td><input type="hidden">지역</input></td>
+                <td><input type="text" id="boardRegion" name="boardRegion" th:value="${boardRegion}" disabled></td>
             </tr>
-            <tr th:unless="${#lists.size(list)} > 0">
-                <td colspan="4">조회된 결과가 없습니다.</td>
+            <tr>
+                <td><input type="hidden">관심사</input></td>
+                <td><input type="text" id="boardInterest" name="boardInterest" th:value="${boardInterest}" disabled></td>
             </tr>
-            </tbody>
-            <button type="buttonlist" onclick="location.href='./boardWrite'">글쓰기</button>
+            <tr>
+                <td><input type="hidden">제목</input></td>
+                <td><input type="text" id="boardTitle" name="boardTitle" th:value="${boardTitle}" disabled></td>
+            </tr>
+            <tr>
+                <td><input type="hidden">작성자</input></td>
+                <td><input type="text" id="boardName" name="boardName" th:value="${boardName}" disabled></td>
+            </tr>
+            <tr>
+                <td><input type="hidden">내용</input></td>
+                <td colspan="2">
+                    <textarea id="boardContent" name="boardContent" th:value="${boardContent}" th:text="${boardContent}" disabled></textarea>
+                </td>
+            </tr>
+        <table>
+            <tr th:value="${boardNo}" th:onclick="|location.href='@{/boardUpdate/{boardNo}(boardNo=${boardNo})}'|">
+                <form id="frm_1" name="frm_1" method="post" action="/boardUpdate">
+                    <button id="button_2" class="btn btn-primary">수정</button>
+                    <input type="hidden" name="boardNo" th:value="${boardNo}" disabled>
+                    <!-- <a th:if="${session.loginUser == null}" href="http://localhost:8080/joinPage">수정</a> -->
+                </form>
+            </tr>
+            <tr>
+                <form id="frm_2" name="frm_2" method="post" action="/boardDelete">
+                    <button id="button_3" type="submit" class="btn btn-primary">삭제</button>
+                    <input type="hidden" name="boardNo" th:value="${boardNo}" disabled>
+                    <!-- <a th:if="${session.loginUser == null}" href="http://localhost:8080/joinPage">삭제</a> -->
+                </form>
+            </tr>
         </table>
-    </div>
-</form>
-<!-- Footer-->
+</div>
 <footer class="bg-white py-4 mt-auto">
     <div class="container px-5">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">

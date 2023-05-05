@@ -25,7 +25,7 @@
 
         }); */
 
-
+    // toggleContent 함수 내부에서 sendData 함수 호출
     function toggleContent() {
       var rows = document.getElementsByClassName("view");
       var i;
@@ -41,19 +41,68 @@
             this.classList.add('changeColor'); // 색상 클래스 추가
           }
 
-          $.ajax({
-            url:'./boardRead',
-            type:'GET', //POST 방식으로 전달
-            data:{boardNo:boardNo},
-            success:function(result){
-                    alert("성공입니다");
-            },
-                  error:function(){
-                    alert("에러입니다");
-                }
-          });
+          // rows.addEventListener('click', function() {
+          //   var boardNo = this.getAttribute('data-boardNo');
+          //   sendData(boardNo);
+          // });
+
+          // sendData 함수 호출
+          // var boardNo = this.dataset.boardNo;
+          // console.log(boardNo);
+          // sendData(boardNo);
+
+          // var boardNo = $(this).parent().data('boardNo');
+          // sendData(boardNo);
         });
       }
     }
+
+
+
+    // sendData 함수를 toggleContent 함수 외부에서 정의
+    function sendData(boardNo) {
+      // var boardNo        = this.dataset.boardNo;
+      console.log(boardNo);
+      // AJAX로 boardNo를 서버에 전달하는 코드 작성
+      $.ajax({
+        url: "/boardRead/" + boardNo,
+        type: "POST",
+        success: function(data) {
+          console.log(data);
+          alert("성공입니다");
+              $("#boardRegion").text(data[0].boardRegion);
+              $("#boardInterest").text(data[0].boardInterest);
+              $("#boardTitle").text(data[0].boardTitle);
+              $("#boardName").text(data[0].boardName);
+              $("#boardContent").text(data[0].boardContent);
+
+          // $('#boardRead').html(response);
+        },
+        error: function(xhr, status, error) {
+          console.error(xhr.responseText);
+          alert("에러입니다");
+        }
+      });
+    }
+
+
+      /* var boardNo = $('#boardNo').val();
+
+      $.ajax({
+              url:'./boardRead',
+              type:'GET', //POST 방식으로 전달
+              data:{boardNo:boardNo},
+              success:function(result){
+                      alert("성공입니다");
+                    },
+              error:function(){
+                      alert("에러입니다");
+                    }
+              });
+
+
+        });
+      }
+    }*/
 
 

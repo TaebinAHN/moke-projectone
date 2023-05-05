@@ -6,6 +6,11 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="/bootstrap/js/board_scripts.js"></script>
     <title>board</title>
     <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico" />
@@ -14,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />-->
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
 </head>
@@ -22,7 +27,7 @@
 <form method="post" action="/boardWrite">
     <div class="container">
         <h2>게시글 목록</h2>
-        <table class="fold-table">
+        <table class="table table-bordered">
             <colgroup>
                 <col width="*"/>
                 <col width="*"/>
@@ -33,7 +38,7 @@
                 <col width="*"/>
                 <col width="*"/>
             </colgroup>
-            <thead>
+            <thead class="thead-dark">
             <tr>
                 <th scope="col">순번</th>
                 <th scope="col">취미</th>
@@ -47,7 +52,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="view" th:if="${#lists.size(list)} > 0" th:each="list : ${list}" onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='white'">
+            <tr class="view" th:if="${#lists.size(list)} > 0" th:each="list : ${list}"
+                onmouseover="this.style.background='#F5F5F5'" onmouseout="this.style.background='white'"
+                th:onclick="|location.href='@{/boardRead/{boardNo}(boardNo=${list.boardNo})}'|">
                 <td th:text="${list.boardNo}">순번</td>
                 <td th:text="${list.boardInterest}">취미</td>
                 <td th:text="${list.boardTitle}">제목</td>
@@ -62,8 +69,8 @@
                 <td colspan="4">조회된 결과가 없습니다.</td>
             </tr>
             </tbody>
-            <button type="buttonlist" onclick="location.href='./boardWrite'">글쓰기</button>
         </table>
+        <button type="buttonlist" onclick="location.href='./boardWrite'">글쓰기</button>
     </div>
 </form>
 <div class="text-center">

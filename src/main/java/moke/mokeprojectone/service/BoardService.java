@@ -36,16 +36,34 @@ public class BoardService {
         return boardMapper.authorGetTotal(criteriaVo);
     }
 
-    /* public List<BoardVo> findAllPost(final BoardVo boardVo) {
-        return boardMapper.findAll(boardVo);
-    } */
-
 
     @Transactional
     public void insertBoard(BoardVo boardVo) throws Exception{
 
         boardMapper.insertBoard(boardVo);
     }
+
+    public List<BoardVo> getBoard(int boardNo) {
+
+        // boardMapper.boardRead(boardNo);
+        return boardMapper.boardRead(boardNo);
+    }
+
+    /* public List<BoardVo> getBoardUpdate(int boardNo) {
+
+        return boardMapper.boardUpdate(boardNo);
+    } */
+
+    public List<BoardVo> getBoardUpdate(int boardNo) {
+
+        return boardMapper.boardUpdate(boardNo);
+    }
+
+    public List<BoardVo> boardUpdate_1(int boardNo) {
+
+        return boardMapper.boardUpdate_1(boardNo);
+    }
+
 
 }
 
